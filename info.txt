@@ -1,6 +1,10 @@
 Good Day
 
 Please find my interpretation of the assignment Done in C.
+
+Built Using Windows system using WSL ubuntu(Linux) 
+in case you bump interpretation compatibilty issues
+
 I attempted the brief to the best of my understanding and 
 i realised later that a function rather than a program was needed but due to
 time constraints i kept it in order to contextualize it to the best of my ability
