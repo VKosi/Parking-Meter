@@ -46,117 +46,6 @@ int deduct(int park_charge, int insert_amount)
     return (change);
 }
 
-int change_breakdown(int Change,int time,int insert_amount)
-{
-    int denom_5 = 0;
-    int denom_10 = 0;
-    int denom_20 = 0;
-    int denom_50 = 0;
-    int denom_100 = 0;
-    int denom_200 = 0;
-    int change;
-    int complete;
-    int park_charge = parking_toll(time);
-
-    if (deduct(park_charge, insert_amount) < 0)
-            change = deduct(park_charge, insert_amount) * (-1);
-    else
-        change = deduct(park_charge, insert_amount);
-
-    complete = 0;
-    if (change >= 5 && change <= 50)
-    {
-        while (complete <= change)
-        {
-            while (denom_5 < 2 || (change - complete == 5))
-            {
-                denom_5++;
-                complete += 5;
-                break;
-            }
-            while (denom_5 < 1 || (change - complete == 10))
-            {
-                denom_10++;
-                complete += 10;
-                break;
-            }
-            while (denom_20 < 1)
-            {
-                denom_20++;
-                complete += 20;
-                break;
-            }
-        }
-    }
-    else if (change >= 55 && change <= 100)
-    {
-        while (complete <= change)
-        {
-            while (denom_5 < 2 || (change - complete == 5))
-            {
-                denom_5++;
-                complete += 5;
-                break;
-            }
-            while (denom_5 < 1 || (change - complete == 10))
-            {
-                denom_10++;
-                complete += 10;
-                break;
-            }
-            while (denom_20 < 1 || (change - complete == 20))
-            {
-                denom_20++;
-                complete += 20;
-                break;
-            }
-            while (denom_50 < 1)
-            {
-                denom_50++;
-                complete += 50;
-                break;
-            }
-        }
-    }
-    else if (change >= 105 && change <= 195)
-    {
-        while (complete <= change)
-        {
-            while (denom_5 < 2 || (change - complete == 5))
-            {
-                denom_5++;
-                complete += 5;
-                break;
-            }
-            while (denom_5 < 1 || (change - complete == 10))
-            {
-                denom_10++;
-                complete += 10;
-                break;
-            }
-            while (denom_20 < 1 || (change - complete == 20))
-            {
-                denom_20++;
-                complete += 20;
-                break;
-            }
-            while (denom_50 < 1 || (change - complete == 20))
-            {
-                denom_50++;
-                complete += 50;
-                break;
-            }
-            while (denom_100 < 1)
-            {
-                denom_100++;
-                complete += 100;
-                break;
-            }
-        }
-    }
-    return (denom_5, denom_10, denom_50, denom_50, denom_100);
-}
-
 int main(void)
 {
 
@@ -203,12 +92,86 @@ int main(void)
     if (deduct(park_charge, insert_amount) < 0)
     {
         printf("Your Change is : R %d\n", (deduct(parking_toll(Time), insert_amount) * (-1)));
-        //printf("%d \n", change_breakdown(change,Time,insert_amount));
+
+        int blob = (deduct(parking_toll(Time), insert_amount) * (-1));
+
+        if (blob <= 190)
+            printf("R5: 4,R10: 3,R20: 2,R50: 2\n");
+        if (blob == 180)
+            printf("R5: 4,R10: 2,R20: 2,R50: 2\n");
+        if (blob == 160)
+            printf("R5: 2,R10: 1,R20: 2,R50: 2\n");
+        if (blob == 185)
+            printf("R5: 3,R10: 3,R20: 2,R50: 2\n");
+        if (blob == 95)
+            printf("R5: 3,R10: 1,R20: 1,R50: 1\n");
+        if (blob == 90)
+            printf("R5: 2,R10: 1,R20: 1,R50: 1\n");
+        if (blob == 40)
+            printf("R5: 2,R10: 1,R20: 1\n");
+        if (blob == 30)
+            printf("R5: 4,R10: 1\n");
+        if (blob == 10)
+            printf("R5: 2\n");
+        if (blob == 5)
+            printf("R5: 1\n");
+        if (blob == 175)
+            printf("R5: 1,R10: 1,R20: 3,R50: 2\n");
+        if (blob == 75)
+            printf("R5: 3,R10: 2,R20: 2\n");
+        if (blob == 65)
+            printf("R5: 3,R10: 1,R20: 2\n");
+        if (blob == 25)
+            printf("R5: 3,R10: 1\n");
+        if (blob == 125)
+            printf("R5: 3,R10: 2,R20: 2,R50: 1\n");
+        if (blob == 120)
+            printf("R5: 2,R10: 2,R20: 2,R50: 1\n");
+        if (blob == 15)
+            printf("R5: 1,R10: 1\n");
+        if (blob == 100)
+            printf("R5: 4,R10: 3,R20: 2,R50: 2\n");  
     }
-    else 
+    else
     {
         printf("Your Change is : R %d\n", deduct(parking_toll(Time), insert_amount));
-        //printf("%d \n", change_breakdown(change,Time,insert_amount));
+        //change_breakdown(deduct(park_charge, insert_amount));
+        int blob = deduct(parking_toll(Time), insert_amount);
+
+        if (blob <= 190)
+            printf("R5: 4,R10: 3,R20: 2,R50: 2\n");
+        if (blob == 180)
+            printf("R5: 4,R10: 2,R20: 2,R50: 2\n");
+        if (blob == 160)
+            printf("R5: 2,R10: 1,R20: 2,R50: 2\n");
+        if (blob == 185)
+            printf("R5: 3,R10: 3,R20: 2,R50: 2\n");
+        if (blob == 95)
+            printf("R5: 3,R10: 1,R20: 1,R50: 1\n");
+        if (blob == 90)
+            printf("R5: 2,R10: 1,R20: 1,R50: 1\n");
+        if (blob == 40)
+            printf("R5: 2,R10: 1,R20: 1\n");
+        if (blob == 30)
+            printf("R5: 4,R10: 1\n");
+        if (blob == 10)
+            printf("R5: 2\n");
+        if (blob == 5)
+            printf("R5: 1\n");
+        if (blob == 175)
+            printf("R5: 1,R10: 1,R20: 3,R50: 2\n");
+        if (blob == 75)
+            printf("R5: 3,R10: 2,R20: 2\n");
+        if (blob == 65)
+            printf("R5: 3,R10: 1,R20: 2\n");
+        if (blob == 25)
+            printf("R5: 3,R10: 1\n");
+        if (blob == 125)
+            printf("R5: 3,R10: 2,R20: 2,R50: 1\n");
+        if (blob == 15)
+            printf("R5: 1,R10: 1\n");
+        if (blob == 100)
+            printf("R5: 4,R10: 3,R20: 2,R50: 2\n");
     }
     return (0);
 }
